@@ -1,28 +1,12 @@
 <script setup lang="ts">
-defineProps<{
-  /**
-   * Current input
-  */
- modelValue: string;
-}>()
-const emit = defineEmits<{
-  /**
-   * Input change
-  */
-  (ev: 'update:modelValue', value: string): void;
-}>()
-
-function onInput(ev: Event) {
-  emit('update:modelValue', (ev.currentTarget as HTMLInputElement).value);
-}
+import { useSearch } from '../composables/useSearch';
+const { search } = useSearch();
 </script>
 <template>
   <div class="wrapper">
     <input
-      type="text"
+      v-model="search"
       class="input"
-      :value="modelValue"
-      @input="onInput"
     />
   </div>
 </template>

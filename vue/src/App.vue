@@ -1,17 +1,12 @@
 <script setup lang="ts">
-  import { computed, ref } from 'vue';
-import { itemMap } from './data/items';
 import Item from './components/Item.vue';
 import SearchBox from './components/SearchBox.vue';
-
-  const input = ref('');
-
-  const itemIds = computed(() => Array.from(itemMap.keys()))
+import { itemIds } from './composables/useItems';
 </script>
 
 <template>
   <div class="pokemonList">
-    <Item v-for="id in itemIds" :key="id" :id="id" :search-query="input" />
+    <Item v-for="id in itemIds" :key="id" :id="id" />
   </div>
   <footer>
     <p>
@@ -23,7 +18,7 @@ import SearchBox from './components/SearchBox.vue';
     </p>
   </footer>
   <div class="searchBox">
-    <SearchBox v-model="input" />
+    <SearchBox />
   </div>
 </template>
 
