@@ -1514,6 +1514,14 @@
     node-gyp "^8.4.1"
     read-package-json-fast "^2.0.3"
 
+"@playwright/test@^1.23.2":
+  version "1.23.2"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.23.2.tgz#6af9e77bafcfe6dd17c23a44b40f793db5245d74"
+  integrity sha512-umaEAIwQGfbezixg3raSOraqbQGSqZP988sOaMdpA2wj3Dr6ykOscrMukyK3U6edxhpS0N8kguAFZoHwCEfTig==
+  dependencies:
+    "@types/node" "*"
+    playwright-core "1.23.2"
+
 "@preact/preset-vite@^2.1.5":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@preact/preset-vite/-/preset-vite-2.3.0.tgz#d30ec26cb98ef88ce3ebbe571817ca6b14c8c610"
@@ -5214,6 +5222,11 @@ pkg-dir@^4.1.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
+
+playwright-core@1.23.2:
+  version "1.23.2"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.23.2.tgz#ddc15b3251e42ee0eed82a96ece3f7b2641d75a4"
+  integrity sha512-UGbutIr0nBALDHWW/HcXfyK6ZdmefC99Moo4qyTr89VNIkYZuDrW8Sw554FyFUamcFSdKOgDPk6ECSkofGIZjQ==
 
 portfinder@^1.0.28:
   version "1.0.28"
