@@ -1,8 +1,8 @@
-import { readonly, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { itemMap } from './useItems';
 import { useSearch } from './useSearch';
 
-const { search } = useSearch();
+const { throttledSearch } = useSearch();
 
 export const useItem = (id: string) => {
   const item = Object.freeze(itemMap.get(id));
@@ -12,7 +12,7 @@ export const useItem = (id: string) => {
   const mark = ref('');
   const suffix = ref('');
 
-  watch(search, (current, prev) => {
+  watch(throttledSearch, (current, prev) => {
     if (current !== prev && item) {
       const searchIndex = item.en.toLowerCase().indexOf(current);
       unmatched.value = searchIndex === -1;
