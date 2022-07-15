@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { nextTick } from 'vue';
+
 defineProps<{
   /**
    * Current input
@@ -12,8 +14,9 @@ const emit = defineEmits<{
   (ev: 'update:modelValue', value: string): void;
 }>()
 
-function onInput(ev: Event) {
-  emit('update:modelValue', (ev.currentTarget as HTMLInputElement).value);
+async function onInput(ev: Event) {
+  await nextTick();
+  emit('update:modelValue', (ev.target as HTMLInputElement).value);
 }
 </script>
 <template>
