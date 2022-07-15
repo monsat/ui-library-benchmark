@@ -1,28 +1,14 @@
 <script setup lang="ts">
-defineProps<{
-  /**
-   * Current input
-  */
- modelValue: string;
-}>()
-const emit = defineEmits<{
-  /**
-   * Input change
-  */
-  (ev: 'update:modelValue', value: string): void;
-}>()
+import { useSearchQuery } from '../composables/useSearchQuery';
 
-function onInput(ev: Event) {
-  emit('update:modelValue', (ev.currentTarget as HTMLInputElement).value);
-}
+const { input } = useSearchQuery();
+
 </script>
 <template>
   <div class="wrapper">
     <input
-      type="text"
+      v-model="input"
       class="input"
-      :value="modelValue"
-      @input="onInput"
     />
   </div>
 </template>

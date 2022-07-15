@@ -1,26 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { itemMap } from '../data/items';
+import { useSearchQuery } from '../composables/useSearchQuery';
 
 const props = defineProps<{
   /**
    * ID of item
    */
   id: string;
-  /**
-   * Search query, in lowercase
-   */
-  searchQuery: string;
 }>();
 
 const item = computed(() => itemMap.get(props.id));
+
+const { word } = useSearchQuery();
 
 const nameMarked = computed(() => {
   const i = item.value;
   if (!i) {
     return undefined;
   }
-  if (!props.searchQuery) {
+  if (!word.value) {
     return {
       unmatched: false,
       prefix: i.en,
@@ -29,7 +28,7 @@ const nameMarked = computed(() => {
     }
   }
   const name = i.en.toLowerCase();
-  const searchIndex = name.indexOf(props.searchQuery);
+  const searchIndex = name.indexOf(word.value);
   if (searchIndex === -1) {
     return {
       unmatched: true,
@@ -41,8 +40,8 @@ const nameMarked = computed(() => {
   return {
     unmatched: false,
     prefix: i.en.substring(0, searchIndex),
-    mark: i.en.substring(searchIndex, searchIndex + props.searchQuery.length),
-    suffix: i.en.substring(searchIndex + props.searchQuery.length),
+    mark: i.en.substring(searchIndex, searchIndex + word.value.length),
+    suffix: i.en.substring(searchIndex + word.value.length),
   };
 })
 </script>
